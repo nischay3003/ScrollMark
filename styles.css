@@ -1,0 +1,12 @@
+.bookmark-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px;
+  border-radius: 50%;
+  background: black;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 9999;
+}
