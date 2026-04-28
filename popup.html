@@ -1,67 +1,143 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Bookmarks</title>
+  <title>LLM & Web Bookmarks</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <style>
     body {
-      width: 400px;
-      min-height: 300px;
+      width: 450px;
+      min-height: 350px;
       font-family: Arial, sans-serif;
       padding: 10px;
       margin: 0;
+      background: #f5f5f5;
     }
 
     h3 {
-      margin-top: 0;
+      margin: 0 0 10px 0;
+      color: #333;
+      font-size: 18px;
+    }
+
+    .filter-buttons {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .filter-btn {
+      flex: 1;
+      padding: 8px 12px;
+      border: 2px solid #ddd;
+      background: white;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      color: #666;
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover {
+      border-color: #4CAF50;
+      color: #4CAF50;
+    }
+
+    .filter-btn.active {
+      background: #4CAF50;
+      color: white;
+      border-color: #4CAF50;
     }
 
     #list {
       list-style: none;
       padding: 0;
       margin: 0;
+      max-height: 400px;
+      overflow-y: auto;
     }
 
     #list li {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 8px 10px;
+      padding: 10px;
       margin: 5px 0;
-      background: #f0f0f0;
+      background: white;
       border-radius: 4px;
+      border-left: 4px solid #4CAF50;
       transition: background 0.2s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    #list li:hover {
+      background: #fafafa;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    }
+
+    .bookmark-text-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .platform-badge {
+      display: inline-block;
+      background: #4CAF50;
+      color: white;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-weight: bold;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .bookmark-name {
       flex: 1;
       cursor: pointer;
+      font-size: 13px;
+      color: #333;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .bookmark-name:hover {
+      color: #4CAF50;
       text-decoration: underline;
     }
 
     #delete-btn {
-      background: #ff4444;
+      background: #ff6b6b;
       color: white;
       border: none;
       border-radius: 3px;
-      padding: 5px 10px;
+      padding: 6px 8px;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 16px;
       transition: background 0.2s;
       margin-left: 10px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
     }
 
-    #delete-btn:hover{
-      background: #cc0000;
-      cursor: pointer;
+    #delete-btn:hover {
+      background: #ff5252;
     }
   </style>
 </head>
 <body>
-  <h3>Saved Bookmarks</h3>
+  <h3>LLM & Web Bookmarks</h3>
+  
+  <div class="filter-buttons">
+    <button class="filter-btn active" id="filter-current">Current Chat</button>
+    <button class="filter-btn" id="filter-all">All Bookmarks</button>
+  </div>
+
   <ul id="list"></ul>
 
   <script src="popup.js"></script>

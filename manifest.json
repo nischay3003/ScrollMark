@@ -1,14 +1,40 @@
 {
   "manifest_version": 3,
-  "name": "ChatGPT Bookmark Tool",
-  "version": "1.0",
-  "description": "Bookmark scroll positions in ChatGPT",
+  "name": "LLM & Web Bookmark Tool",
+  "version": "2.1",
+  "description": "Bookmark scroll positions across ChatGPT, Claude, Gemini, and any other websites",
   "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": [
+    "https://*.openai.com/*",
+    "https://*.chatgpt.com/*",
+    "https://*.claude.ai/*",
+    "https://*.google.com/*",
+    "https://*.microsoft.com/*",
+    "https://*.perplexity.ai/*",
+    "https://*.huggingface.co/*",
+    "https://*.deepseek.com/*",
+    "https://*.groq.com/*",
+    "https://*/*",
+    "http://*/*"
+  ],
   "content_scripts": [
     {
-      "matches": ["https://chat.openai.com/*", "https://chatgpt.com/*"],
+      "matches": [
+        "https://*.openai.com/*",
+        "https://*.chatgpt.com/*",
+        "https://*.claude.ai/*",
+        "https://*.google.com/*",
+        "https://*.microsoft.com/*",
+        "https://*.perplexity.ai/*",
+        "https://*.huggingface.co/*",
+        "https://*.deepseek.com/*",
+        "https://*.groq.com/*",
+        "https://*/*",
+        "http://*/*"
+      ],
       "js": ["content.js"],
-      "css": ["styles.css"]
+      "css": ["styles.css"],
+      "run_at": "document_start"
     }
   ],
   "action": {
